@@ -17,16 +17,16 @@ A Build pack that allows calling a jmeter script from a cf environment
 
 ```
 applications:
-- name: zload-port
+- name: jmeter-cli
   instances: 1
   memory: 1024M
   disk_quota: 1024M
   no-route: true
   health-check-type: none
-  buildpack: https://github.com/aripka-pivotal/cf-buildpack-jmeter
-  stack: cflinuxfs2
+  buildpack: https://github.com/icejumper/cf-buildpack-jmeter.git
+  stack: cflinuxfs3
   env:
-    LOAD_SCRIPT: portfolio-load.jmx
-    TEST_URL: portfolio-s1p12.cfapps.io
+    LOAD_SCRIPT: 01_masterdata-service-supreme-scenario.jmx
+    TEST_URL: sap.com
     
 ```
