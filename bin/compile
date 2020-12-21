@@ -45,10 +45,10 @@ then
   mkdir -p $BUILD_DIR/local/jdk
 fi
 
-if [ ! -d $BUILD_DIR/local/nginx ]
-then
-  #mkdir -p $BUILD_DIR/local/nginx
-fi
+#if [ ! -d $BUILD_DIR/local/nginx ]
+#then
+#  mkdir -p $BUILD_DIR/local/nginx
+#fi
 
 # Explode the JMETER tarball to BUILD_DIR
 if [ ! -e $BUILD_DIR/local/apache-jmeter-5.3 ]
