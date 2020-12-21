@@ -32,6 +32,8 @@ JDK_BLOB=https://download.run.pivotal.io/openjdk-jdk/trusty/x86_64/openjdk-1.8.0
 JDK=openjdk-1.8.0_51.tar.gz
 JMETER_BLOB=https://mirror.netcologne.de/apache.org//jmeter/binaries/apache-jmeter-5.3.tgz
 JMETER=apache-jmeter-5.3.tgz
+NGINX_BLOB=https://nginx.org/download/nginx-1.19.6.tar.gz
+NGINX=nginx-1.19.6.tar.gz
 
 if [ ! -d $BUILD_DIR/local ]
 then
@@ -41,6 +43,11 @@ fi
 if [ ! -d $BUILD_DIR/local/jdk ]
 then
   mkdir -p $BUILD_DIR/local/jdk
+fi
+
+if [ ! -d $BUILD_DIR/local/nginx ]
+then
+  mkdir -p $BUILD_DIR/local/nginx
 fi
 
 # Explode the JMETER tarball to BUILD_DIR
@@ -68,6 +75,19 @@ then
     cd $OLDPWD
   fi
   tar -xzf $CACHE_DIR/$JDK -C $BUILD_DIR/local/jdk
+fi
+
+# Explode the nginx tarball to BUILD_DIR
+if [ ! -e $BUILD_DIR/local/nginx ]
+then
+  echo "------> Installing nginx"
+  if [ ! -e $CACHE_DIR/$JDK ]
+  then
+    OLDPWD=$(pwd)
+    cd $CACHE_DIR && wget $NGINX_BLOB
+    cd $OLDPWD
+  fi
+  tar -xzf $CACHE_DIR/$NGINX -C $BUILD_DIR/local/nginx
 fi
 
 # Move the app into position
