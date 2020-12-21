@@ -81,7 +81,7 @@ fi
 if [ ! -e $BUILD_DIR/local/nginx ]
 then
   echo "------> Installing nginx"
-  if [ ! -e $CACHE_DIR/$JDK ]
+  if [ ! -e $CACHE_DIR/$NGINX ]
   then
     OLDPWD=$(pwd)
     cd $CACHE_DIR && wget -q $NGINX_BLOB
